@@ -1,0 +1,29 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title>Alpha numerical sorting algorithm</title> 
+</head> 
+<body> 
+    <div id="output"> 
+        <h1>Alpha numerical sorting algorithm</h1> 
+        <p>Sorting the following array:</p> 
+        <p id="array">mango, TuttyFruity, Bell, 1DS22IS108, Peanuts, HoD, Z, dob, 3300, hod, 
+Jack</p> 
+        <p>Sorted array:</p> 
+        <p id="sortedArray"></p> 
+    </div> 
+    <script> 
+        var elements = ["mango", "TuttyFruity", "Bell", "1DS22IS108", "3300", "Peanuts", 
+"HoD", "Z", "dob", "hod", "Jack"]; 
+        function alphanumericalSort(a, b) { 
+            var aString = a.toString(); 
+            var bString = b.toString(); 
+            var result = aString.localeCompare(bString); 
+            return result; 
+        } 
+        elements.sort(alphanumericalSort); 
+        console.log(elements); 
+        document.getElementById("sortedArray").innerText = elements.join(", "); 
+    </script> 
+</body> 
+</html> 

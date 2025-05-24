@@ -1,0 +1,58 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Prime Factor Calculator</title> 
+</head> 
+<body> 
+    <script>
+        function getPrimeFactors(n) { 
+    const factors = []; 
+    while (n % 2 === 0) { 
+        factors.push(2); 
+        n = n / 2; 
+    } 
+    for (let i = 3; i <= Math.sqrt(n); i += 2) { 
+        while (n % i === 0) { 
+            factors.push(i); 
+            n = n / i; 
+        } 
+    } 
+    if (n > 2) { 
+        factors.push(n); 
+    } 
+    return factors; 
+} 
+document.getElementById('calculateBtn').addEventListener('click', () => { 
+    const input = document.getElementById('numberInput'); 
+    const res = document.getElementById('result'); 
+    const number = parseInt(input.value); 
+ 
+    res.className = ''; 
+     
+    if (isNaN(number) || number < 1) { 
+        res.textContent = 'Please enter a valid positive integer'; 
+        return; 
+    } 
+ 
+    const factors = getPrimeFactors(number); 
+    if (factors.length === 0) { 
+        res.textContent = 'No prime factors found'; 
+    } else { 
+        res.textContent = `Prime factors of ${number}: ${factors.join(' × ')}`; 
+    } 
+}); 
+
+    </script>
+    <div class="container"> 
+        <h1>Prime Factor Calculator</h1> 
+        <div> 
+            <input type="number" id="numberInput" placeholder="Enter a positive integer"> 
+            <button id="calculateBtn">Calculate Prime Factors</button> 
+        </div> 
+        <div id="result"></div> 
+    </div> 
+    <script src="p5.js"></script> 
+</body> 
+</html> 
